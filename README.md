@@ -1,0 +1,5 @@
+- Android
+- Database
+- WebServer Programming (JSP)
+- Operation System
+- Graphics (OpenGL)
