@@ -1,0 +1,69 @@
+
+// ChatMsg.java 채팅 메시지 ObjectStream 용.
+import java.io.Serializable;
+import java.sql.Date;
+
+import javax.swing.ImageIcon;
+
+class ChatMsg implements Serializable {
+	private static final long serialVersionUID = 1L;
+	public String Id;
+	public String Code; 
+	public String Data;
+	public String room_Id;
+	public ImageIcon Img;
+	public String userList;
+	public Date date;
+	
+	public ChatMsg(String id, String code, String room_id, String userlist, String msg) {
+		Id = id;
+		Code = code;
+		room_Id = room_id;
+		userList = userlist;
+		Data = msg;
+	}
+	
+	public String getUserList() {
+		return userList;
+	}
+	
+	public void setUserList(String userList) {
+		this.userList = userList;
+	}
+	
+	public String getRoomId() {
+		return room_Id;
+	}
+
+	public void setRoomId(String room_id) {
+		this.room_Id = room_id;
+	}
+	
+	public String getCode() {
+		return Code;
+	}
+
+	public void setCode(String code) {
+		this.Code = code;
+	}
+
+	public String getData() {
+		return Data;
+	}
+
+	public String getId() {
+		return Id;
+	}
+
+	public void setId(String id) {
+		this.Id = id;
+	}
+
+	public void setData(String data) {
+		this.Data = data;
+	}
+
+	public void setImg(ImageIcon img) {
+		this.Img = img;
+	}
+}

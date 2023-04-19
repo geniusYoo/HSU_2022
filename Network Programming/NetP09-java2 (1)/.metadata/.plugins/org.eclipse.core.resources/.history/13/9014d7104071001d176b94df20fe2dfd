@@ -1,0 +1,108 @@
+import java.awt.Checkbox;
+import java.awt.EventQueue;
+import java.awt.Frame;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.io.InterruptedIOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import java.awt.GridLayout;
+
+public class UserList extends JDialog{
+	public JButton applyButton;
+	public JCheckBox userCheckBox;
+	public int num;
+	public String variable;
+	public StringBuilder sb = new StringBuilder();
+	public StringBuilder selectedUserList = new StringBuilder();
+	public Vector<JCheckBox> userCheckBoxs = new Vector<>();
+	private JLabel label_1;
+	public Vector<String> users = new Vector<>();
+	public Vector<String> selectedUsers = new Vector<>();
+	public String state = null;
+	public UserList(Frame frame, String title) {
+		
+		super(frame,title,true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setBounds(0,0,400,400);;
+		getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel label = new JLabel("채팅 상대를 선택하세요.");
+		label.setBounds(10,15,200,30);
+		getContentPane().add(label);
+		
+		label_1 = new JLabel("");
+		getContentPane().add(label_1);
+			
+		applyButton = new JButton("apply");
+		applyButton.setBounds(380,210,50,40);
+		
+
+		applyButton.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectedUserList = sb;
+				sb.setLength(0);
+				setVisible(false);
+				sb.append(userCheckBoxs.elementAt(0).getText()); // 자신은 방에 무조건 포함되어야 하므로
+				
+			}
+			
+		});
+		
+		getContentPane().add(applyButton);
+        setLocationRelativeTo(null);		
+	}
+	
+	public void makeCheckbox(Vector<String> users) {
+		// 배열을 비워야 하는ㄴ데 .... 어떻게 비울까 ...
+		userCheckBoxs.clear();
+
+		for(int i=0; i<users.size(); i++) {		
+			userCheckBoxs.add(new JCheckBox(users.elementAt(i)));
+			userCheckBoxs.elementAt(i).addItemListener(new ItemListener() {			
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					for(int k=0; k<users.size(); k++) {
+						if(e.getItem() == userCheckBoxs.elementAt(k)) {
+							sb.append(userCheckBoxs.elementAt(k).getText());
+							sb.append(" ");
+						}
+					}
+				}
+			});
+			getContentPane().add(userCheckBoxs.elementAt(i));
+			
+		}
+
+	}
+
+	public String showDialog() {
+		makeCheckbox(users);
+		setVisible(true);
+
+		if(selectedUserList.length() == 0) return null;
+		else return sb.toString();		
+	}
+	
+	public void setUsers(Vector<String> users) {	
+		this.users.clear();
+		for(int i=0; i<users.size(); i++) {				
+			this.users.add(users.elementAt(i));
+		}
+	}
+	
+}

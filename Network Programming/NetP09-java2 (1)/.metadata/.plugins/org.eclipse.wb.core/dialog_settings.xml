@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.wb.internal.core.model.property.editor.string.StringPropertyDialog">
+		<item key="x" value="879"/>
+		<item key="y" value="356"/>
+		<item key="width" value="561"/>
+		<item key="height" value="346"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.editor.actions.errors.ErrorsDialog">
+		<item key="x" value="356"/>
+		<item key="y" value="115"/>
+		<item key="width" value="752"/>
+		<item key="height" value="619"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.editor.errors.report2.CreateReportDialog">
+		<item key="x" value="439"/>
+		<item key="y" value="253"/>
+		<item key="width" value="586"/>
+		<item key="height" value="343"/>
+	</section>
+</section>

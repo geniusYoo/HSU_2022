@@ -1,0 +1,73 @@
+import java.awt.EventQueue;
+import java.awt.FileDialog;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Vector;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.BorderLayout;
+
+public class UserProfile extends JPanel{
+
+	private JFrame frame;
+	public JPanel profilePane;
+	public JLabel profileImageLabel;
+	public JLabel profileNameLabel;
+	private ImageIcon icon;
+	public FileDialog fd;
+	ChatClient chatClient;
+	public String userName;
+	public UserProfile(ChatClient ChatClient, String username, ImageIcon profileImg) {
+		chatClient = ChatClient;
+		userName = username;
+//		frame = new JFrame();
+//		frame.setBounds(0,0,300,50);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		profilePane = new JPanel();
+		profilePane.setBounds(0,0,300,50);
+		
+		profileImageLabel = new JLabel("");
+		profileImageLabel.setIcon(profileImg);       
+		profileImageLabel.setBounds(10,0,50,50);
+        
+        profileNameLabel = new JLabel(userName);
+        profileNameLabel.setBounds(70,0,240,50);
+        
+		profilePane.setLayout(null);
+		
+		profilePane.add(profileImageLabel);
+		profilePane.add(profileNameLabel);		
+		
+		profileImageLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	System.out.println("Mouse Clicked!!!!");
+            	frame = new JFrame("이미지첨부");
+				fd = new FileDialog(frame, "이미지 선택", FileDialog.LOAD);
+				// frame.setVisible(true);
+				// fd.setDirectory(".\\");
+				fd.setVisible(true);
+				//System.out.println(fd.getDirectory() + fd.getFile());
+				ChatMsg obcm = new ChatMsg(username, "103", "0", "0", "PROFILECHANGE");
+				ImageIcon img = new ImageIcon(fd.getDirectory() + fd.getFile());
+				obcm.setImg(img);
+				chatClient.SendObject(obcm);		
+            }
+
+        });
+	}	
+	
+	
+	
+	public JPanel getProfile() {
+		return this.profilePane;
+	}
+}

@@ -1,0 +1,129 @@
+import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+public class UserRoom extends JPanel{
+
+	private JFrame frame;
+	private JPanel roomPane;
+	public JLabel roomImageLabel;
+	public JLabel roomNameLabel;
+	public JLabel roomLastChatLabel;
+	
+	private ImageIcon icon;
+	
+	public String username; // 채팅방을 생성한 username
+	public String room_id;
+	public String userList;
+	public String userStatus;
+	public String lastChatMsg;
+	public String lastChatTime;
+	public JButton chatRoomNameButton;
+	public ChatClientRoom chatRoom; // 실제 채팅창
+	public Boolean online;
+	public ChatClient chatClientMain; // 메인 client
+	
+	public UserRoom(ChatClient chatClientMain, ImageIcon icon, String name, String room_id, String userlist, String lastChatMsg) {
+		this.chatClientMain = chatClientMain;
+		this.username = name;
+		this.room_id = room_id;
+		this.userList = userlist;
+		addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		setBorder(null);
+		setPreferredSize(new Dimension(235,52));
+		setBackground(Color.WHITE);
+		setLayout(null);
+		
+		String [] users = userList.split(" ");
+		String label = users[0];
+		for(int i=1; i<users.length; i++) {
+			label += (", " + users[i]);
+		}
+		roomImageLabel = new JLabel("");
+		roomImageLabel.setBorder(null);
+		roomImageLabel.setBackground(Color.WHITE);
+		roomImageLabel.setBounds(2, 1, 50, 50);
+		add(roomImageLabel);
+		
+		chatRoomNameButton = new JButton(label);
+		chatRoomNameButton.setOpaque(false);
+		chatRoomNameButton.setFocusPainted(false);
+		chatRoomNameButton.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(chatRoom == null) {
+					chatRoom = new ChatClientRoom(chatClientMain, username);
+					chatRoom.setVisible(true);
+				}
+				else {
+					chatRoom.setVisible(true);
+				}
+			}
+		});
+		chatRoomNameButton.setHorizontalAlignment(SwingConstants.LEFT);
+		chatRoomNameButton.setBackground(Color.WHITE);
+		chatRoomNameButton.setBounds(65,3,77,20);
+		chatRoomNameButton.setBorder(null);
+		add(chatRoomNameButton);
+		
+		lastChatMsg = new JLabel(lastChatMsg);
+		
+		
+		
+		frame = new JFrame();
+		frame.setBounds(0,0,300,50);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		roomPane = new JPanel();
+		roomPane.setBounds(0,0,300,50);
+		
+		roomImageLabel = new JLabel("");
+		roomImageLabel.setIcon(new ImageIcon(UserRoom.class.getResource("/icons/default_profile.jpeg")));        
+		roomImageLabel.setBounds(0,0,50,50);
+        
+        roomNameLabel = new JLabel("roomName");
+        roomNameLabel.setBounds(60,2,240,20);
+        
+        roomLastChatLabel = new JLabel("last chats");
+        roomLastChatLabel.setBounds(60,20,240,30);
+        
+		roomPane.setLayout(null);
+		
+		roomPane.add(roomImageLabel);
+		roomPane.add(roomNameLabel);
+		roomPane.add(roomLastChatLabel);		
+	}
+	
+	public void addActionListener() {
+		ActionListener listener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(roomPane.equals(e.getSource())) {		
+					ChatClientRoom userChatRoom = new ChatClientRoom();
+					setVisible(false);
+				}
+				
+			}
+		};
+	}
+
+
+}

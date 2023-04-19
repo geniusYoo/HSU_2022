@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+/Users/geniuus/gitspace/netP/NetP_kktalk/NetP09-java2 (1)/.metadata/.plugins/org.eclipse.jdt.core
+4174531934.index
+117218341.index
+1865797976.index
+2614447494.index

@@ -1,0 +1,41 @@
+
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+
+public class ChatMsgLabel extends JPanel {
+
+	public JLabel usernameLabel;
+	public JLabel userImageLabel;
+	public JLabel userTimeLabel;
+	public JTextPane chatPane; 
+	
+	public ChatMsgLabel() {
+		setBorder(null);
+		setPreferredSize(new Dimension(235,52));
+		setBackground(Color.WHITE);
+		setLayout(null);	
+		
+		userImageLabel = new JLabel("");
+		userImageLabel.setBorder(null);
+		userImageLabel.setBackground(Color.WHITE);
+		userImageLabel.setBounds(2, 1, 50, 50);
+		add(userImageLabel);
+		
+		usernameLabel = new JLabel("username");
+		usernameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		usernameLabel.setBackground(Color.WHITE);
+		usernameLabel.setHorizontalAlignment(SwingConstants.LEFT);		
+		usernameLabel.setBorder(null);
+		usernameLabel.setBounds(60, 1, 170, 20);
+		add(usernameLabel);
+	}
+
+}

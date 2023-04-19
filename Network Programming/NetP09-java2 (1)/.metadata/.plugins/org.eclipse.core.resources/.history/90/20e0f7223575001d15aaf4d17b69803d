@@ -1,0 +1,53 @@
+
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+
+public class ChatMsgLabel extends JPanel {
+
+	public JLabel usernameLabel;
+	public JLabel userImageLabel;
+	public JLabel userTimeLabel;
+	public JTextPane chatPane; 
+	
+	public ChatMsgLabel() {
+		setBorder(null);
+		setPreferredSize(new Dimension(380,52));
+		setBackground(Color.WHITE);
+		setLayout(null);	
+		
+		userImageLabel = new JLabel("");
+		userImageLabel.setBorder(null);
+		userImageLabel.setBackground(Color.WHITE);
+		userImageLabel.setBounds(2, 1, 50, 50);
+		add(userImageLabel);
+		
+		usernameLabel = new JLabel("username");
+		usernameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		usernameLabel.setBackground(Color.WHITE);
+		usernameLabel.setBorder(null);
+		usernameLabel.setBounds(60, 1, 160, 20);
+		add(usernameLabel);
+		
+		chatPane = new JTextPane();
+		chatPane.setBackground(Color.WHITE);
+		chatPane.setBorder(null);
+		chatPane.setBounds(60, 24, 220, 20);
+		add(chatPane);
+		
+		userTimeLabel = new JLabel("13:30");
+		userTimeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		userTimeLabel.setBackground(Color.WHITE);
+		userTimeLabel.setBorder(null);
+		userTimeLabel.setBounds(300, 24, 50, 20);
+		add(userTimeLabel);
+	}
+
+}

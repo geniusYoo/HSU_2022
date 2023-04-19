@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/detailViewItem_profile_image"
+            android:src="@mipmap/ic_launcher"
+            android:layout_margin="7.5dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+        <TextView
+            android:text="Username"
+            android:id="@+id/detailViewItem_profile_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/detailViewItem_imageView_content"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
+    <LinearLayout
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/detailViewItem_favorite_imageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+
+            android:src="@drawable/heart" />
+
+        <ImageView
+            android:id="@+id/detailViewItem_comment_imageView"
+            android:layout_width="35dp"
+            android:layout_marginLeft="8dp"
+            android:layout_height="35dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/comment" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/detailViewItem_favoriteCounter_textView"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="21.8dp"
+        android:layout_marginTop="-12dp"
+        android:layout_height="wrap_content"
+        android:text="0" />
+
+    <TextView
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/detailViewItem_explain_textView"
+        android:text="Explain Contents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
